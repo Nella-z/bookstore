@@ -1,0 +1,240 @@
+.product__container{
+  margin-top: 25px;
+}
+.product__inf-cover img{
+  border-radius: 15px;
+width: 295px;
+}
+.product__inf-description{
+  display: flex;
+  gap: 20px;
+}
+.rating__and__reviews{
+  display: flex;
+  gap: 25px;
+}
+.product__inf-item{
+    display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        border-bottom: 1px solid #110C1F;
+}
+.product__inf-item.item__last{
+  border-bottom:none;
+}
+.title__book{
+  color: #290247;
+  font-size: 20px;
+  margin: 16px 0 8px;
+}
+.author__book{
+   color: #290247;
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+.product__inf-content{
+  margin-top: 32px;
+  font-size: 16px;
+  color: #110C1F;
+  line-height: 1.4;
+  gap: 10px;
+  display: grid;
+}
+.similar__products{
+  margin-bottom: 100px;
+}
+.reviews__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+}
+
+.reviews__pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #D9D9D9;
+    opacity: 1;
+    cursor: pointer;
+    transition: background 0.3s ease, width 0.3s ease;
+}
+
+.reviews__pagination .swiper-pagination-bullet-active {
+    background: #290247;
+    width: 24px;
+    border-radius: 4px; /* активная точка становится "таблеткой" — по желанию, можно убрать для обычного круга */
+} /* =========================================
+   СЕКЦИЯ ОТЗЫВОВ - ИСПРАВЛЕННАЯ ВЕРСИЯ
+   ========================================= */
+.reviews {
+    padding: 60px 0 100px;
+    margin-top: 40px;
+}
+
+.reviews h2 {
+    margin-bottom: 40px;
+    color: #290247;
+    font-size: 2rem;
+}
+
+.reviews-slider-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.reviews__slider-reviews {
+    width: 100%;
+    overflow: hidden;
+}
+
+.reviews__slider-reviews .swiper-wrapper {
+    align-items: stretch;
+}
+
+.reviews__slider-reviews .swiper-slide {
+    height: auto;
+    width: 100%;
+    max-width: 715px;
+    margin: 0 auto;
+}
+
+.review-card--active {
+    width: 100%;
+    max-width: 715px;
+    min-height: 296px;
+    display: flex;
+    flex-direction: row;
+    padding: 32px;
+    gap: 32px;
+    align-items: flex-start;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.review-card__main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.review-card__author {
+    font-size: 14px;
+    color: #8D8D8D;
+    margin-bottom: 12px;
+}
+
+.review-card__title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #110C1F;
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.review-card__text {
+    font-size: 14px;
+    color: #373947;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.review-card__more {
+    color: #290247;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: auto;
+    transition: color 0.2s;
+}
+
+.review-card__more:hover {
+    color: #DD423E;
+}
+
+.review-card__divider {
+    width: 1px;
+    background: #E7E7E7;
+    align-self: stretch;
+    flex-shrink: 0;
+}
+
+.review-card__extra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    min-width: 180px;
+    flex-shrink: 0;
+}
+
+.review-card__book img {
+    width: 110px;
+    height: 160px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.review-card__actions {
+    text-align: center;
+}
+
+.review-card__actions p {
+    font-size: 13px;
+    color: #373947;
+    margin: 0 0 12px;
+}
+
+.review-card__reactions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.review-card__reactions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #373947;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.review-card__reactions button:hover {
+    color: #290247;
+}
+
+.reviews__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 32px;
+}
+
+.reviews__pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #D9D9D9;
+    opacity: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reviews__pagination .swiper-pagination-bullet-active {
+    background: #290247;
+    width: 24px;
+    border-radius: 4px;
+}
