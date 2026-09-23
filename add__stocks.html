@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Панель админа: книги</title> 
+    <link rel="icon" href="images/icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Caveat:wght@400..700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+      <header class="header">
+        <div class="container">
+            <nav aria-label="Основное меню">
+                <div class="main-menu">
+                    <ul class="menu__sect1">
+                        <li class="menu-item has-dropdown">
+                            <a href="#" class="logo"><img src="images/icon.svg" alt="logo"></a>
+                        </li>
+
+
+                    </ul>
+                    <ul class="menu__sect2">
+                        <li class="menu-item has-dropdown">
+                            <div class="header__poisk">
+                                <img src="images/poisk.svg" alt="Поиск">
+                                <input type="text" id="poisk" name="poisk" class="poisk__input" placeholder="Поиск"
+                                    required>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="menu__sect3">
+                        <li class="menu-item has-dropdown"> <a href="admin_books.html" class= "a__header admin__header">
+                                <svg width="20" height="18" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9167 5.66667C11.9167 4.5616 11.4777 3.50179 10.6963 2.72039C9.91488 1.93899 8.85507 1.5 7.75 1.5H1.5V17.125H8.79167C9.62047 17.125 10.4153 17.4542 11.0014 18.0403C11.5874 18.6263 11.9167 19.4212 11.9167 20.25M11.9167 5.66667V20.25M11.9167 5.66667C11.9167 4.5616 12.3557 3.50179 13.1371 2.72039C13.9185 1.93899 14.9783 1.5 16.0833 1.5H22.3333V17.125H15.0417C14.2129 17.125 13.418 17.4542 12.832 18.0403C12.2459 18.6263 11.9167 19.4212 11.9167 20.25" stroke="#290247" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                                <p>Книги</p>
+                            </a></li>
+                       <li class="menu-item has-dropdown">
+    <a href="admin_stocks.html" class="a__heade admin__header">
+       <span>%</span> 
+        <p>Акции</p>
+    </a>
+</li>
+                        <li class="menu-item has-dropdown"> <a href="input.html" class="input__header">
+                                Выйти
+                            </a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+ <section class="book-stocks">
+    <div class="container book-page__container">
+        <div class="book-page__toolbar">
+                <h2>Добавить акцию</h2>
+                <a href="#" class="book-page__save-btn">Сохранить</a>
+            </div>
+       <div class="book-page__info">
+<div class="book-page__summary">
+    <button class="book-stocks__cover">
+        Добавить обложку
+    </button>
+    <div class="book-page__details">
+        <div class="book-page__detail-row">
+    <p>Тема:</p>
+    <input type="text" id="name__book"  class="book__input"  required>
+</div>
+
+<div class="book-page__detail-row">
+    <p>Книги:</p>
+    <input type="text" id="avtor__book"  class="book__input"  required>
+</div>
+
+<div class="book-page__detail-row book-page__detail-row--last">
+    <p>% скидки:</p>
+         <form action="#">
+      <select name="stocks" id="stocks__books">
+        <option value="stocks1">10%</option>
+        <option value="stocks1">15%</option>
+        <option value="stocks1">20%</option>
+        <option value="stocks1">25%</option>
+        <option value="stocks1">30%</option>
+        <option value="stocks1">50%</option>
+      </select>
+</form>
+</div>
+    </div>
+</div>
+<div class="book-page__description">
+   </div>
+       </div>
+    </div>
+</section>
+    <footer>
+        <div class="container">
+            <div class="footer">
+                <a href="#" class="logo"><img src="images/icon.svg" alt="logo"></a>
+                <div class="footer__inf">
+                    <ul class="footer__nav">
+                        <li class="footer__nav-item">
+                            <a href="#" class="footer__nav-link">Партнерская программа</a>
+                        </li>
+                        <li class="footer__nav-item">
+                            <a href="#" class="footer__nav-link">Подробнее о нас</a>
+                        </li>
+                        <li class="footer__nav-item">
+                            <a href="#" class="footer__nav-link">Контакты</a>
+                        </li>
+                    </ul>
+
+                    <ul class="footer__nav">
+                        <li class="footer__nav-item">
+                            <p>Остались вопросы? Напишите нам</p>
+                           <a href="mailto:korablik@yandex.ru" class="footer__contacts-link">korablik@yandex.ru</a>
+                        </li>
+                        <li class="footer__nav-item footer__inf-item">
+                            <a href="#" class="footer__nav-link"><img src="images/vk.svg" alt="vk"></a>
+                             <a href="#" class="footer__nav-link"><img src="images/ok.svg" alt="ok"></a>
+                              <a href="#" class="footer__nav-link"><img src="images/twitter.svg" alt="twitter"></a>
+                        </li>
+                        <li class="footer__nav-item">
+                            <p>Мы на связи с 9 до 18 часов <br>(GMT +03:00)</p>
+                        </li>
+                    </ul>
+
+                    <ul class="footer__nav">
+                        <li class="footer__nav-item">
+                            <p>Бесплатный звонок по России</p>
+                              <a href="tel:+89885455555" class="footer__contacts-link">8 (988) 545-55-55</a>
+                        </li>
+                         <li class="footer__nav-item">
+                            <p>Мы в социальных сетях</p>
+                            <div class="footer__inf-item">
+                            <a href="#" class="footer__nav-link"><img src="images/vk.svg" alt="vk"></a>
+                             <a href="#" class="footer__nav-link"><img src="images/ok.svg" alt="ok"></a>
+                              <a href="#" class="footer__nav-link"><img src="images/twitter.svg" alt="twitter"></a>
+                             <a href="#" class="footer__nav-link"><img src="images/telegram.svg" alt="telegram"></a></div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
