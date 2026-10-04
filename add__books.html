@@ -58,103 +58,113 @@
             </nav>
         </div>
     </header>
- <section class="book-page">
+<section class="book-page">
     <div class="container book-page__container">
-        <div class="book-page__toolbar">
+        <form class="book-page__form" action="#" method="POST">
+            
+            <div class="book-page__toolbar">
                 <h2>Добавить книгу</h2>
-                <a href="#" class="book-page__save-btn">Сохранить</a>
+                <button type="submit" class="book-page__save-btn">Сохранить</button>
             </div>
-       <div class="book-page__info">
-<div class="book-page__summary">
-    <button class="book-page__cover">
-        Добавить обложку
-    </button>
-    <div class="book-page__details">
-        <div class="book-page__detail-row">
-    <p>Название книги</p>
-    <input type="text" id="name__book"  class="book__input"  required>
-</div>
 
-<div class="book-page__detail-row">
-    <p>Автор книги</p>
-    <input type="text" id="avtor__book"  class="book__input"  required>
-</div>
+            <div class="book-page__info">
+                <div class="book-page__summary">
+                    <button type="button" class="book-page__cover">
+                        Добавить обложку
+                    </button>
+                    
+                    <div class="book-page__details">
+                        <div class="book-page__detail-row">
+                            <label for="name__book">Название книги</label>
+                            <input type="text" id="name__book" name="title" class="book__input" required>
+                        </div>
 
-<div class="book-page__detail-row">
-    <p>ID товара</p>
-    <input type="text" id="prod-id" class="book__input"  required>
-    
-</div>
-<div class="book-page__detail-row">
-    <p>Издательство</p>
-     <input type="text" id="prod-publisher" class="book__input"  required>
-   
-</div>
-<div class="book-page__detail-row">
-    <p>Серия</p>
-     <input type="text" id="prod-series" class="book__input"  required>
-    
-</div>
-<div class="book-page__detail-row">
-    <p>Год издания</p>
-     <input type="text" id="prod-year" class="book__input"  required>
-   
-</div>
-<div class="book-page__detail-row">
-    <p>ISBN</p>
-     <input type="text" id="prod-isbn" class="book__input"  required>
-</div>
-<div class="book-page__detail-row">
-    <p>Количество страниц</p>
-     <input type="text" id="prod-pages" class="book__input"  required>
-</div>
-<div class="book-page__detail-row">
-    <p>Размер</p>
-     <input type="text" id="prod-size" class="book__input"  required>
-</div>
-<div class="book-page__detail-row">
-    <p>Тип обложки</p>
-     <input type="text" id="prod-cover" class="book__input"  required>
-</div>
-<div class="book-page__detail-row">
-    <p>Тираж</p>
-     <input type="text" id="prod-circulation" class="book__input"  required>
-</div>
-<div class="book-page__detail-row">
-    <p>Вес, г</p>
-     <input type="text" id="prod-weight" class="book__input"  required>
-</div>
-<div class="book-page__detail-row book-page__detail-row--last">
-    <p>Возрастные ограничения</p>
-         <form action="#">
-      <select name="stocks" id="stocks__books">
-        <option value="stocks1">0+</option>
-        <option value="stocks1">6+</option>
-        <option value="stocks1">12+</option>
-        <option value="stocks1">14+</option>
-        <option value="stocks1">16+</option>
-        <option value="stocks1">18+</option>
-      </select>
-</form>
-</div>
-<div class="book-page__detail-row book-page__detail-row--last">
-    <p>Акция</p>
-     <form action="#">
-      <select name="stocks" id="stocks__books">
-        <option value="stocks1">Тема 1</option>
-        <option value="stocks1">Тема 2</option>
-        <option value="stocks1">Тема 3</option>
-      </select>
-</form>
-</div>
-    </div>
-</div>
-<div class="book-page__description">
-    <p>Описание книги:</p>
-     <textarea id="book-page__text" class="book__input-text"  name="myTextarea" rows="8" cols="50">
-</textarea>
-   </div>
-       </div>
+                        <div class="book-page__detail-row">
+                            <label for="avtor__book">Автор книги</label>
+                            <input type="text" id="avtor__book" name="author" class="book__input" required>
+                        </div>
+
+                        <div class="book-page__detail-row">
+                            <label for="prod-id">ID товара</label>
+                            <input type="text" id="prod-id" name="id" class="book__input" required>
+                        </div>
+
+                        <div class="book-page__detail-row">
+                            <label for="prod-publisher">Издательство</label>
+                            <input type="text" id="prod-publisher" name="publisher" class="book__input" required>
+                        </div>
+
+                        <div class="book-page__detail-row">
+                            <label for="prod-series">Серия</label>
+                            <input type="text" id="prod-series" name="series" class="book__input" required>
+                        </div>
+
+                        <div class="book-page__detail-row">
+                            <label for="prod-year">Год издания</label>
+                            <input type="number" id="prod-year" name="year" class="book__input" required>
+                        </div>
+
+                        <div class="book-page__detail-row">
+                            <label for="prod-isbn">ISBN</label>
+                            <input type="text" id="prod-isbn" name="isbn" class="book__input" required>
+                        </div>
+
+                        <div class="book-page__detail-row">
+                            <label for="prod-pages">Количество страниц</label>
+                            <input type="number" id="prod-pages" name="pages" class="book__input" required>
+                        </div>
+
+                        <div class="book-page__detail-row">
+                            <label for="prod-size">Размер</label>
+                            <input type="text" id="prod-size" name="size" class="book__input" required>
+                        </div>
+
+                        <div class="book-page__detail-row">
+                            <label for="prod-cover">Тип обложки</label>
+                            <input type="text" id="prod-cover" name="coverType" class="book__input" required>
+                        </div>
+
+                        <div class="book-page__detail-row">
+                            <label for="prod-circulation">Тираж</label>
+                            <input type="number" id="prod-circulation" name="circulation" class="book__input" required>
+                        </div>
+
+                        <div class="book-page__detail-row">
+                            <label for="prod-weight">Вес, г</label>
+                            <input type="number" id="prod-weight" name="weight" class="book__input" required>
+                        </div>
+
+                        <div class="book-page__detail-row book-page__detail-row--last">
+                            <label for="age-restriction">Возрастные ограничения</label>
+                            <select name="ageRestriction" id="age-restriction" class="book__input" required>
+                                <option value="0+">0+</option>
+                                <option value="6+">6+</option>
+                                <option value="12+">12+</option>
+                                <option value="14+">14+</option>
+                                <option value="16+" selected>16+</option>
+                                <option value="18+">18+</option>
+                            </select>
+                        </div>
+
+                        <div class="book-page__detail-row book-page__detail-row--last">
+                            <label for="book-promo">Акция</label>
+                            <select name="promo" id="book-promo" class="book__input">
+                                <option value="none">Нет</option>
+                                <option value="promo1">Тема 1</option>
+                                <option value="promo2">Тема 2</option>
+                                <option value="promo3">Тема 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-page__description">
+                    <label for="book-page__text">Описание книги:</label>
+                    <textarea id="book-page__text" name="text" class="book__input-text" rows="8" cols="50" required></textarea>
+                </div>
+            </div>
+
+        </form>
     </div>
 </section>
     <footer>
