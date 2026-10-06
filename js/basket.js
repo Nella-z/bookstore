@@ -65,12 +65,9 @@ const cartBooks = books.filter(book => cartIds.includes(book.id));
         event.stopPropagation();
 
         const bookId = Number(deleteBtn.dataset.id);
-        const selectedBook = books.find(book => book.id === bookId);
-        
-        if (selectedBook) {
-            selectedBook.isInCart = false;
-            renderBasket();
-        }
+
+removeFromCart(bookId);
+renderBasket();
     });
 
     renderBasket();
@@ -83,10 +80,10 @@ document.addEventListener('click', function (event) {
     event.preventDefault(); 
 
     const bookId = Number(addToCartBtn.dataset.bookId);
-    const selectedBook = books.find(book => book.id === bookId);
+const selectedBook = books.find(book => book.id === bookId);
 
-    if (selectedBook) {
-        selectedBook.isInCart = true;
-        window.location.href = 'basket.html';
-    }
+if (selectedBook) {
+    addToCart(bookId);
+    window.location.href = 'basket.html';
+}
 });
