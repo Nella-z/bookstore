@@ -6,7 +6,6 @@
 
 ![Главная страница](screenshot/home.png)
 
----
 
 ## Возможности
 
@@ -27,7 +26,6 @@
 - Список книг с удалением и форма добавления новой книги
 - Список акций с удалением и форма добавления акции
 
----
 
 ## Скриншоты
 
@@ -48,15 +46,15 @@
 
 ### Вход и регистрация
 
-| ![Вход](screenshot/login.png) | ![Регистрация](screenshot/register.png) |
+ ![Вход](screenshot/login.png) 
+ ![Регистрация](screenshot/register.png) 
 
 
 ### Админ-панель
 
-| ![Админка: книги](screenshot/admin-books.png) | ![Админка: акции](screenshot/admin-stocks.png) |
+![Админка: книги](screenshot/admin-books.png) 
+![Админка: акции](screenshot/admin-stocks.png) 
 
-
----
 
 ## Технологии
 
