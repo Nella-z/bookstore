@@ -45,9 +45,6 @@ ul {
 }
 
 
-/* =========================================
-   2. ХЕДЕР И НАВИГАЦИЯ (Используется на всех страницах)
-   ========================================= */
 .header-inf {
   display: flex;
   margin: 2.41vh 3.48vw;
@@ -136,6 +133,18 @@ ul {
   border: 1px solid #290247;
 }
 
+.search{
+  position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: #fff;
+    width: 29vw;
+}
+.search li{
+  padding: 10px 8px;
+  border: 1px solid #290247;
+
+}
 .input__header:hover {
   color: #290247;
   background-color: #FFFFFF;
@@ -160,7 +169,6 @@ ul {
 .favour_yes:hover{
   fill: #290247;
 }
-/* Навигация */
 nav {
   display: flex;
   justify-content: center;
@@ -304,14 +312,13 @@ nav {
   transform: translateY(0);
 }
 
-/* .submenu-item НЕ позиционированный — тогда .subfiltr встаёт относительно .submenu, а не относительно строки */
 .submenu-item {
   width: 100%;
 }
 
 .subfiltr {
 position: absolute;
-  top: 0; /* совпадает с верхом .submenu, а не с верхом строки .filtr__btn */
+  top: 0; 
   left: 100%;
   height: 90vh;
     background-color: #fff;
@@ -348,7 +355,6 @@ position: absolute;
   background-color: #E6DCFF;
 }
 
-/* Оверлей на body, который "гасит" всё, что ниже подменю */
 body::after {
   content: "";
   position: fixed;
@@ -430,9 +436,6 @@ display: flex;
 
 
 
-/* =========================================
-   3. СТРАНИЦЫ ВХОДА И РЕГИСТРАЦИИ (input.html, register.html)
-   ========================================= */
 .registration {
   background: url(../images/registration.svg) no-repeat;
   margin: 9.5vh 18vw 0;
@@ -526,9 +529,6 @@ display: flex;
 }
 
 
-/* =========================================
-   4. ГЛАВНАЯ СТРАНИЦА (home.html)
-   ========================================= */
 .filtr {
   text-align: center;
       align-items: center;
@@ -1049,7 +1049,6 @@ display: flex;
 
 .delite__yes:hover path {
   opacity: 0.8;
-   /* fill: #e6dcff;*/
 }
 
 .basket__section{
@@ -1144,7 +1143,7 @@ fill:#ffffff;
 }
 .price__slider {
     position: relative;
-    height: 4px; /* высота трека */
+    height: 4px; 
 }
 
 .price__track,
@@ -1159,11 +1158,11 @@ fill:#ffffff;
 .price__track {
     left: 0;
     right: 0;
-    background: #E5E5E5; /* серый фон всей шкалы */
+    background: #E5E5E5; 
 }
 
 .price__range {
-    background: #290247; /* закрашенный отрезок между ползунками */
+    background: #290247; 
 }
 
 .price__input {
@@ -1174,7 +1173,7 @@ fill:#ffffff;
     appearance: none;
     -webkit-appearance: none;
     background: none;
-    pointer-events: none; /* сам инпут прозрачный, кликается только бегунок */
+    pointer-events: none; 
 }
 
 .price__input::-webkit-slider-thumb {
@@ -1216,7 +1215,6 @@ fill:#ffffff;
   margin: 24px 0;
 }
 
-/* Чекбоксы подкатегорий/языка */
 .checkbox__list {
   display: flex;
   flex-direction: column;
@@ -1433,12 +1431,9 @@ width: 295px;
 .reviews__pagination .swiper-pagination-bullet-active {
     background: #290247;
     width: 24px;
-    border-radius: 4px; /* активная точка становится "таблеткой" — по желанию, можно убрать для обычного круга */
+    border-radius: 4px; 
 } 
 
-/* =========================================
-   СЕКЦИЯ ОТЗЫВОВ (rv-)
-   ========================================= */
 .rv-section {
     padding: 60px 0 100px;
     margin-top: 40px;
@@ -1450,9 +1445,7 @@ width: 295px;
     font-size: 2rem;
 }
 
-.rv-container {
-    /* наследует .container */
-}
+
 
 .rv-slider-wrapper {
     position: relative;
@@ -1485,7 +1478,6 @@ width: 295px;
     align-items: center;
 }
 
-/* Карточка отзыва */
 .rv-card {
     background: #fff;
     border-radius: 16px;
@@ -1641,7 +1633,6 @@ width: 295px;
     font-size: 13px;
 }
 
-/* Пагинация */
 .rv-pagination {
     display: flex;
     justify-content: center;
@@ -1898,9 +1889,6 @@ width: 295px;
     box-shadow: 0 0 30px 0 rgba(31, 26, 45, 0.22);
     width: 20vw;
 }
-/* =========================================
-   5. ФУТЕР (Footer)
-   ========================================= */
 footer {
   border-top: 1px solid #290247;
   padding-top: 25px;
@@ -2017,8 +2005,6 @@ footer {
   padding: 15px;
   font-size: 14px;
   border-radius: 10px;
-  /*width: 10vw;
-  height: 5vh;*/
 }
 .product__inf-list{
   width: 30vw;
@@ -2039,7 +2025,7 @@ footer {
 
 .catalog__filtr_mini.active{
     display: grid;
-    position: fixed;      /* fixed — чтобы была строго над страницей, а не зависела от скролла родителя */
+    position: fixed;     
     top: 0;
     left: 0;
     width: 100%;
@@ -2049,7 +2035,7 @@ footer {
     font-size: 1rem;
     z-index: 100;
     padding: 50px;
-    transform: translateY(-100%);   /* старт — спрятана над экраном */
+    transform: translateY(-100%);   
     animation: slide-down 0.3s ease-in-out forwards;
 }
 
@@ -2225,9 +2211,6 @@ width: 1240px;    justify-content: space-between;
 }
 }
 
-/* =========================================
-   6. АДАПТИВНОСТЬ (Media Queries)
-   ========================================= */
 @media (max-width: 1000px) {
   .registration {
     margin: 10vh 10vw 0;

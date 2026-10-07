@@ -95,18 +95,26 @@
                 </ul>
                 <ul class="menu__sect2">
                     <li class="menu-item has-dropdown">
+                        <div class="poisk_ul">
                         <div class="header__poisk">
                             <img src="images/poisk.svg" alt="Поиск">
                             <input type="text" id="poisk" name="poisk" class="poisk__input" placeholder="Поиск" required>
+                            
                         </div>
+                     <ul class="search" id="search"></ul>
+                    </div>
                     </li>
                 </ul>
                 <ul class="menu__sect3">
                     <li class="menu-item has-dropdown header__poisk_mobile">
+                         <div class="poisk_ul">
                         <button class="poisk__mobile"><img src="images/poisk.svg" alt="Поиск"></button>
                         <div class="header__poisk_mini">
                             <img src="images/poisk.svg" alt="Поиск">
-                            <input type="text" id="poisk_mobile" name="poisk" class="poisk__input" placeholder="Поиск" required>
+                            <input type="text" id="poisk" name="poisk" class="poisk__input" placeholder="Поиск" required>
+                            
+                        </div>
+                        <ul class="search" id="search"></ul>
                         </div>
                     </li>
                     <li class="menu-item has-dropdown"> 
@@ -280,6 +288,7 @@
             </div>
         </div>
     </footer>
+    <script src="js/api.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script src="js/data.js"></script>
      <script src="js/categories.js"></script>
@@ -288,9 +297,7 @@
       <script src="js/reviews.js"></script>
          <script src="js/basket.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/user.js"></script>
-    <script src="js/form.js"></script>
-     <script src="js/login.js"></script>
+     <script src="js/poisk.js"></script>
 </body>
 
 </html>
