@@ -1,4 +1,4 @@
-const books = [
+const defaultBooks = [
   {
     id: 1,
     title: "Мертвая голова",
@@ -1592,6 +1592,13 @@ const books = [
     isInCart: false
   }
 ];
+
+let books = JSON.parse(localStorage.getItem('books')) || defaultBooks;
+
+function saveBooksToStorage() {
+    localStorage.setItem('books', JSON.stringify(books));
+}
+
 function getCart() {
     const raw = localStorage.getItem('cart');
     return raw ? JSON.parse(raw) : [];
@@ -1647,7 +1654,7 @@ function createBookCard(book) {
                     </div>
                     <button data-book-id="${book.id}" class="favour">
                         <svg width="13" height="19" viewBox="0 0 13 19" fill="none"
-                            xmlns="http://www.w3.org/2000/svg" class="${isFavourite(book.id) ? 'favour_yes' : 'favour_no'}"> >
+                            xmlns="http://www.w3.org/2000/svg" class="${isFavourite(book.id) ? 'favour_no' : 'favour_yes'}"> >
                             <path d="M1 0.5H12C12.2761 0.5 12.5 0.723858 12.5 1V17.5615C12.5 18.0087 11.9575 18.2314 11.6436 17.9131L7.76758 13.9824C7.19434 13.4016 6.26177 13.3854 5.66895 13.9463L1.34375 18.04C1.02501 18.3417 0.5 18.1156 0.5 17.6768V1C0.5 0.723858 0.723858 0.5 1 0.5Z"
                                 stroke="#110C1F" />
                         </svg>
@@ -1676,7 +1683,7 @@ function similarProducts(book) {
                             </div>
                             <button data-book-id="${book.id}" class="favour">
                                <svg width="13" height="19" viewBox="0 0 13 19" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg" class="${isFavourite(book.id) ? 'favour_yes' : 'favour_no'}">>
+                                    xmlns="http://www.w3.org/2000/svg" class="${isFavourite(book.id) ? 'favour_no' : 'favour_yes'}">>
                                     <path
                                         d="M1 0.5H12C12.2761 0.5 12.5 0.723858 12.5 1V17.5615C12.5 18.0087 11.9575 18.2314 11.6436 17.9131L7.76758 13.9824C7.19434 13.4016 6.26177 13.3854 5.66895 13.9463L1.34375 18.04C1.02501 18.3417 0.5 18.1156 0.5 17.6768V1C0.5 0.723858 0.723858 0.5 1 0.5Z"
                                         stroke="#110C1F" />
@@ -1785,9 +1792,9 @@ function infBookCard(book) {
                     <div class="">
                     <p class="basket__shipping-price"><span>${book.price}</span> ₽</p>
                     <div class="acquire">
-                        <button class="acquire__btn">Купить</button>
+                        <button type="button" class="acquire__btn into__basket" data-book-id="${book.id}">Купить</button>
                          <button data-book-id="${book.id}" class="favour">
-                                <svg width="22" height="33" viewBox="0 0 22 33" fill="none" xmlns="http://www.w3.org/2000/svg" class="${isFavourite(book.id) ? 'favour_yes' : 'favour_no'}">>
+                                <svg width="22" height="33" viewBox="0 0 22 33" fill="none" xmlns="http://www.w3.org/2000/svg" class="${isFavourite(book.id) ? 'favour_no' : 'favour_yes'}">>
 <path d="M1 0.5H20.667C20.943 0.500175 21.167 0.723965 21.167 1V30.8955C21.1668 31.3424 20.6244 31.5644 20.3105 31.2461L12.251 23.0732C11.6777 22.4921 10.7443 22.476 10.1514 23.0371L1.34375 31.373C1.02501 31.6747 0.5 31.4486 0.5 31.0098V1L0.509766 0.899414C0.556292 0.671447 0.758286 0.5 1 0.5Z" stroke="#110C1F"/>
 </svg>
                             </button ></div>
@@ -1891,7 +1898,6 @@ renderBooks('coming__soon',   comingSoon);
 
 document.addEventListener('click', function (event) {
     const favourButton = event.target.closest('.favour');
-    
     if (!favourButton) return;
 
     event.preventDefault();
@@ -1899,29 +1905,29 @@ document.addEventListener('click', function (event) {
 
     const bookId = Number(favourButton.dataset.bookId);
     const selectedBook = books.find(book => book.id === bookId);
-    
     if (!selectedBook) return;
 
-const nowFavourite = !isFavourite(bookId);
-if (nowFavourite) {
-    addToFavourites(bookId);
-} else {
-    removeFromFavourites(bookId);
-}
-
-const svg = favourButton.querySelector('svg');
-if (svg) {
+    const nowFavourite = !isFavourite(bookId);
+    
     if (nowFavourite) {
-        svg.classList.remove('favour_no');
-        svg.classList.add('favour_yes');
+        addToFavourites(bookId);
     } else {
-        svg.classList.remove('favour_yes');
-        svg.classList.add('favour_no');
+        removeFromFavourites(bookId);
     }
-}
 
-const favouritesList = document.getElementById('favourites-list');
-if (favouritesList && !nowFavourite) {
+    const svg = favourButton.querySelector('svg');
+    if (svg) {
+        if (nowFavourite) {
+            svg.classList.remove('favour_yes');
+            svg.classList.add('favour_no');
+        } else {
+            svg.classList.remove('favour_no');
+            svg.classList.add('favour_yes');
+        }
+    }
+
+    const favouritesList = document.getElementById('favourites-list');
+    if (favouritesList && !nowFavourite) {
         const bookCard = favourButton.closest('.book'); 
         if (bookCard) bookCard.remove();
 
@@ -1929,5 +1935,4 @@ if (favouritesList && !nowFavourite) {
             favouritesList.innerHTML = '<p>В избранном пока нет книг</p>';
         }
     }
-    
 });

@@ -21,12 +21,17 @@ document.getElementById('form__input').addEventListener('submit', function(event
         isValid__input = false;
      }
      clearErrors();
-     if(!email.value.trim()) errorForm('Введите вашеemail', email);
+     if(!email.value.trim()) errorForm('Введите ваш email', email);
      if(!password.value.trim()) errorForm('Введите ваше пароль', password);
 
 
     if(isValid__input) {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser && storedUser.email === email.value.trim() && storedUser.password === password.value) {
+        localStorage.setItem('isLoggedIn', 'true');
         window.location.href = 'home.html';
-
+    } else {
+        errorForm('Неверная почта или пароль', email);
     }
+}
 })

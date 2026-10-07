@@ -58,49 +58,45 @@
             </nav>
         </div>
     </header>
- <section class="book-stocks">
+<section class="book-page">
     <div class="container book-page__container">
-        <div class="book-page__toolbar">
+        <form class="book-page__form" action="#" method="POST">
+            <div class="book-page__toolbar">
                 <h2>Добавить акцию</h2>
-                <button class="book-page__save-btn">Сохранить</button>
+                <button type="submit" class="book-page__save-btn">Сохранить</button>
             </div>
-             <form class="stock-form" action="#" method="POST">
-       <div class="book-page__info">
-<div class="book-page__summary">
-    <button class="book-stocks__cover">
-        Добавить обложку
-    </button>
-    <div class="book-page__details">
-        <div class="book-page__detail-row">
-    <p>Тема:</p>
-    <input type="text" id="name__book"  class="book__input"  required>
-</div>
 
-<div class="book-page__detail-row">
-    <p>Книги:</p>
-    <input type="text" id="avtor__book"  class="book__input"  required>
-</div>
+            <div class="book-page__info">
+                <div class="book-page__summary">
+                    <div class="book-page__details">
+                        <div class="book-page__detail-row">
+                            <label for="stock-theme">Тема акции</label>
+                            <input type="text" id="stock-theme" name="theme" class="book__input" required placeholder="Например: Увлекательные приключения">
+                        </div>
 
-<div class="book-page__detail-row book-page__detail-row--last">
-    <p>% скидки:</p>
-         <form action="#">
-      <select name="stocks" id="stocks__books">
-        <option value="stocks1">10%</option>
-        <option value="stocks1">15%</option>
-        <option value="stocks1">20%</option>
-        <option value="stocks1">25%</option>
-        <option value="stocks1">30%</option>
-        <option value="stocks1">50%</option>
-      </select>
-</form>
-</div>
-    </div>
-</div>
-<div class="book-page__description">
-   </div>
-       </div></form>
+                        <div class="book-page__detail-row">
+                            <label for="stock-books">На какие книги</label>
+                            <input type="text" id="stock-books" name="booksText" class="book__input" required placeholder="Например: на книги про космос">
+                        </div>
+
+                        <div class="book-page__detail-row book-page__detail-row--last">
+                            <label for="stock-discount">% скидки</label>
+                            <select name="discountPercent" id="stock-discount" class="book__input" required>
+                                <option value="10">10%</option>
+                                <option value="15">15%</option>
+                                <option value="20" selected>20%</option>
+                                <option value="25">25%</option>
+                                <option value="30">30%</option>
+                                <option value="50">50%</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </section>
+
     <footer>
         <div class="container">
             <div class="footer">
@@ -152,7 +148,39 @@
             </div>
         </div>
     </footer>
+    
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('.book-page__form');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); 
+        const newId = stocks.length > 0 ? Math.max(...stocks.map(s => s.id)) + 1 : 1;
+        
+        const newStock = {
+            id: newId,
+            theme: document.getElementById('stock-theme').value.trim(),
+            booksText: document.getElementById('stock-books').value.trim(),
+            discountPercent: Number(document.getElementById('stock-discount').value)
+        };
+        
+        stocks.push(newStock);
+        saveStocksToStorage();
+        
+        alert('Акция успешно добавлена!');
+        window.location.href = 'admin_stocks.html'; 
+    });
+});
+</script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+      <script src="js/data.js"></script>
+     <script src="js/categories.js"></script>
+      <script src="js/stocks.js"></script>
+      <script src="js/favourites.js"></script>
+      <script src="js/reviews.js"></script>
+         <script src="js/basket.js"></script>
     <script src="js/main.js"></script>
+    
 </body>
 </html>

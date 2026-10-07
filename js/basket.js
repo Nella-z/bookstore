@@ -87,3 +87,192 @@ if (selectedBook) {
     window.location.href = 'basket.html';
 }
 });
+
+// === Оформление заказа ===
+const orderBtn = document.querySelector('.basket__order-btn') || document.querySelector('[class*="order"]');
+const modal = document.getElementById('order-modal');
+const closeModal = document.getElementById('close-modal');
+const orderForm = document.getElementById('order-form');
+const orderCityInput = document.getElementById('order-city');
+
+if (orderBtn && modal) {
+    orderBtn.addEventListener('click', () => {
+        const cart = getCart();
+        if (cart.length === 0) {
+            alert('Корзина пуста');
+            return;
+        }
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user && user.city && user.city.trim() !== '' && user.city.trim() !== 'Не указан') {
+            orderCityInput.value = user.city;
+        } else {
+            orderCityInput.value = '';
+        }
+        modal.style.display = 'flex';
+    });
+}
+
+if (closeModal) {
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+}
+
+if (modal) {
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+}
+
+if (orderForm) {
+    orderForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const city = orderCityInput.value.trim();
+        const street = document.getElementById('order-street').value.trim();
+        const house = document.getElementById('order-house').value.trim();
+
+        if (!city || !street || !house) {
+            alert('Заполните все поля');
+            return;
+        }
+
+        const storedOrders = JSON.parse(localStorage.getItem('orders')) || [];
+
+        const cartIds = getCart();
+        const cartBooks = books.filter(b => cartIds.includes(b.id));
+
+        cartBooks.forEach(book => {
+            storedOrders.push({
+                id: Date.now() + Math.floor(Math.random() * 1000),
+                bookId: book.id,
+                status: 'В пути',
+                address: `${city}, ${street}, ${house}`,
+                date: new Date().toLocaleDateString('ru-RU')
+            });
+        });
+
+        localStorage.setItem('orders', JSON.stringify(storedOrders));
+
+        saveCart([]);
+
+        modal.style.display = 'none';
+
+        alert('Заказ успешно оформлен!');
+        window.location.reload();
+    });
+}
+
+
+const VALID_PROMOCODES = {
+    "BOOK10": { type: "percent", value: 10 },   
+    "BOOK500": { type: "fixed", value: 500 },   
+    "BOOK15": { type: "percent", value: 15 }    
+};
+
+let appliedPromo = null; 
+
+// 2. Элементы DOM
+const promoInput = document.getElementById('promocode__input');
+const promoBtn = document.getElementById('promocode__btn');
+const promoMessage = document.getElementById('promocode__message');
+const summaryPriceEl = document.querySelector('.summary__price');
+const discountEl = document.querySelector('.discount-amount') || createDiscountElement();
+
+function createDiscountElement() {
+    const el = document.createElement('p');
+    el.className = 'discount-amount';
+    el.style.color = '#27ae60'; 
+    el.style.fontWeight = 'bold';
+    if (summaryPriceEl && summaryPriceEl.parentElement) {
+        summaryPriceEl.parentElement.insertBefore(el, summaryPriceEl);
+    }
+    return el;
+}
+
+function checkPromocode() {
+    const code = promoInput.value.trim().toUpperCase();
+    
+    if (!code) {
+        showMessage("Введите промокод", "error");
+        return;
+    }
+
+    if (appliedPromo) {
+        showMessage("Промокод уже применен", "error");
+        return;
+    }
+
+    const promoData = VALID_PROMOCODES[code];
+
+    if (promoData) {
+        appliedPromo = promoData;
+        showMessage(`Промокод "${code}" успешно применен!`, "success");
+        promoInput.disabled = true; 
+        promoBtn.disabled = true;
+        promoBtn.style.opacity = "0.5";
+        updateCartTotal(); 
+    } else {
+        showMessage("Неверный промокод", "error");
+    }
+}
+
+function updateCartTotal() {
+    const cartIds = getCart();
+    const cartBooks = books.filter(book => cartIds.includes(book.id));
+    
+    const baseTotal = cartBooks.reduce((sum, book) => sum + book.price, 0);
+    let discountAmount = 0;
+
+    if (appliedPromo) {
+        if (appliedPromo.type === "percent") {
+            discountAmount = Math.round(baseTotal * (appliedPromo.value / 100));
+        } else if (appliedPromo.type === "fixed") {
+            discountAmount = appliedPromo.value;
+        }
+        
+        if (discountAmount > baseTotal) discountAmount = baseTotal;
+    }
+
+    const finalTotal = baseTotal - discountAmount;
+
+    if (summaryPriceEl) {
+        summaryPriceEl.textContent = `${finalTotal} ₽`;
+    }
+    
+    if (discountEl) {
+        if (discountAmount > 0) {
+            discountEl.textContent = `Скидка: -${discountAmount} ₽`;
+            discountEl.style.display = 'block';
+        } else {
+            discountEl.style.display = 'none';
+        }
+    }
+}
+
+function showMessage(text, type) {
+    promoMessage.textContent = text;
+    if (type === "success") {
+        promoMessage.style.color = "#27ae60"; 
+    } else {
+        promoMessage.style.color = "#e74c3c"; 
+    }
+}
+
+if (promoBtn) {
+    promoBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        checkPromocode();
+    });
+}
+
+if (promoInput) {
+    promoInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            checkPromocode();
+        }
+    });
+}

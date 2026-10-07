@@ -1324,8 +1324,7 @@ fill:#ffffff;
     box-shadow: 1px 1px 27px -5px rgba(31, 26, 45, 0.22);
     display: flex;
     gap: 5VW;
-    width: 78%;
-    justify-content: space-between;
+width: 1240px;    justify-content: space-between;
 }
 .profile__inf{
   width: 50%;
@@ -2064,6 +2063,23 @@ footer {
     align-items: center;
     gap: 30px;
 }
+#save__changes{
+  color: #FFFFFF;
+    background-color: #290247;
+    padding: 12px 16px;
+    border-radius: 5px;
+    border: 1px solid #290247;
+    font-size: 16px;
+}
+#save__changes:hover{
+  color: #290247;
+    background-color: #fff;
+}
+.btn_prof{
+      display: flex;
+width: 1240px;    justify-content: space-between;
+    align-items: center;
+}
 @media (max-width: 1300px) {
       .all__books {
         grid-template-columns: repeat(3, 1fr); 
@@ -2197,12 +2213,15 @@ footer {
 .profile {
     padding: 4VH 5VW;
     gap: 1VW;
-    width: 60%;}
+            width: 75vw;}
     .profile__container h2{
       margin: 32px 0;
     }
     .form__profile-input {
     width: 200px;
+}
+.btn_prof{
+          width: 75vw;
 }
 }
 
@@ -2262,7 +2281,10 @@ footer {
 .catalog__filtr {
     width: 22vw;}
         .profile {
-        width: 66%;
+        width: 86vw;
+    }
+        .btn_prof {
+        width: 86vw;
     }
 }
 @media (max-width: 920px) {
@@ -2320,6 +2342,9 @@ width: 14px;
 .rv-card--active .rv-card__text {
     margin-bottom: 14px;
 }
+    .btn_prof {
+        width: 66%;
+    }
 
 }
 @media (max-width: 768px) {
@@ -2443,6 +2468,9 @@ display: flex;
 }
 .form__profile-input {
         width: 48vw;
+    }
+        .btn_prof {
+        width: 100%;
     }
 }
 @media (max-width: 650px) {

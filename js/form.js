@@ -29,8 +29,20 @@ document.getElementById('form__registration').addEventListener('submit', functio
        if(!birth.value.trim()) errorForm('Введите дату рождения', birth);
 
 
-    if(isValid) {
-        alert('Форма успешно отправлена');
-        window.location.href = 'input.html';
-    }
+   if(isValid) {
+    const newUser = {
+        fio: fio.value.trim(),
+        email: email.value.trim(),
+        phone: phone.value.trim(),
+        birth: birth.value.trim(),
+        city: "Не указан", 
+        password: password.value,
+        avatar: "images/avatar.svg" 
+    };
+    localStorage.setItem('user', JSON.stringify(newUser));
+    localStorage.setItem('isLoggedIn', 'true');
+    
+    alert('Регистрация успешна!');
+    window.location.href = 'home.html';
+}
 })

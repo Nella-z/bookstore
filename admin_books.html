@@ -65,81 +65,9 @@
                 <a href="add__books.html" class="add__bood">Добавить</a>
             </div>
             
-             <div class="basket__container">
-            <div class="basket__list">
-                <!-- Товар 1 -->
-                <a class="basket__item book">
-                    <img src="images/book.jpg" class="book__img" alt="Книга">
-                    <div class="inf__book">
-                        <div class="">
-                             <div class="star">
-                                <img src="images/Star.svg" alt="оценка">
-                                <p>4.9</p>
-                            </div>
-
-                             <h3 class="name__book">Лягушка, слон и брокколи. Как жить и как не надо</h3>
-                           <p class="fio__book-basket">Алексей Марков</p>
-                       </div>
-                      
-                        <div class="basket__controls">
-                            <p class="price">575₽</p>
-                            <div class="like__delite">
-                                <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="delite__yes">
-<path d="M2.5 15C2.04167 15 1.64931 14.8368 1.32292 14.5104C0.996528 14.184 0.833333 13.7917 0.833333 13.3333V2.5H0V0.833333H4.16667V0H9.16667V0.833333H13.3333V2.5H12.5V13.3333C12.5 13.7917 12.3368 14.184 12.0104 14.5104C11.684 14.8368 11.2917 15 10.8333 15H2.5ZM10.8333 2.5H2.5V13.3333H10.8333V2.5ZM4.16667 11.6667H5.83333V4.16667H4.16667V11.6667ZM7.5 11.6667H9.16667V4.16667H7.5V11.6667Z" fill="#1D1B20"/>
-</svg>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Товар 2 -->
-                 <a class="basket__item book">
-                    <img src="images/book.jpg" class="book__img" alt="Книга">
-                    <div class="inf__book">
-                        <div class="">
-                             <div class="star">
-                                <img src="images/Star.svg" alt="оценка">
-                                <p>4.9</p>
-                            </div>
-
-                             <h3 class="name__book">Лягушка, слон и брокколи. Как жить и как не надо</h3>
-                           <p class="fio__book-basket">Алексей Марков</p>
-                       </div>
-                      
-                        <div class="basket__controls">
-                            <p class="price">575₽</p>
-                            <div class="like__delite">
-                                <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="delite__yes">
-<path d="M2.5 15C2.04167 15 1.64931 14.8368 1.32292 14.5104C0.996528 14.184 0.833333 13.7917 0.833333 13.3333V2.5H0V0.833333H4.16667V0H9.16667V0.833333H13.3333V2.5H12.5V13.3333C12.5 13.7917 12.3368 14.184 12.0104 14.5104C11.684 14.8368 11.2917 15 10.8333 15H2.5ZM10.8333 2.5H2.5V13.3333H10.8333V2.5ZM4.16667 11.6667H5.83333V4.16667H4.16667V11.6667ZM7.5 11.6667H9.16667V4.16667H7.5V11.6667Z" fill="#1D1B20"/>
-</svg>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- Товар 3 -->
-                <a class="basket__item book">
-                    <img src="images/book.jpg" class="book__img" alt="Книга">
-                    <div class="inf__book">
-                        <div class="">
-                             <div class="star">
-                                <img src="images/Star.svg" alt="оценка">
-                                <p>4.9</p>
-                            </div>
-
-                             <h3 class="name__book">Лягушка, слон и брокколи. Как жить и как не надо</h3>
-                           <p class="fio__book-basket">Алексей Марков</p>
-                       </div>
-                      
-                        <div class="basket__controls">
-                            <p class="price">575₽</p>
-                            <div class="like__delite">
-                                <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="delite__yes">
-<path d="M2.5 15C2.04167 15 1.64931 14.8368 1.32292 14.5104C0.996528 14.184 0.833333 13.7917 0.833333 13.3333V2.5H0V0.833333H4.16667V0H9.16667V0.833333H13.3333V2.5H12.5V13.3333C12.5 13.7917 12.3368 14.184 12.0104 14.5104C11.684 14.8368 11.2917 15 10.8333 15H2.5ZM10.8333 2.5H2.5V13.3333H10.8333V2.5ZM4.16667 11.6667H5.83333V4.16667H4.16667V11.6667ZM7.5 11.6667H9.16667V4.16667H7.5V11.6667Z" fill="#1D1B20"/>
-</svg>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+             <div   class="basket__container">
+            <div id="admin-books-list"  class="basket__list">
+                
             </div>
 
      
@@ -197,9 +125,52 @@
             </div>
         </div>
     </footer>
-    <!-- 1. Сначала библиотека Swiper -->
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('admin-books-list');
+    if (!container) return;
+
+    if (books.length === 0) {
+        container.innerHTML = '<p>Книги не найдены. Добавьте первую!</p>';
+        return;
+    }
+
+    const booksHTML = books.map(book => `
+        <div class="admin-book-card" style="display: flex; gap: 20px; align-items: center; border: 1px solid #eee; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
+            <img src="${book.coverUrl}" alt="${book.title}" style="width: 80px; height: 110px; object-fit: cover; border-radius: 4px;">
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+                    <span style="color: #f5a623; font-weight: bold;">${book.rating}</span>
+                    <h3 style="margin: 0; font-size: 18px;">${book.title}</h3>
+                </div>
+                <p style="margin: 0; color: #666;">${book.author}</p>
+                <p style="margin: 5px 0 0 0; font-size: 18px; font-weight: bold; color: #290247;">${book.price}₽</p>
+            </div>
+            <button onclick="deleteBookFromAdmin(${book.id})" style="padding: 8px 16px; background: #ff4d4f; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">Удалить</button>
+        </div>
+    `).join('');
+
+    container.innerHTML = booksHTML;
+});
+
+function deleteBookFromAdmin(id) {
+    if (!confirm('Удалить эту книгу из каталога?')) return;
+    
+    books = books.filter(b => b.id !== id);
+    saveBooksToStorage();
+    location.reload(); 
+}
+</script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <!-- 2. Потом ваш файл с инициализацией -->
+   <script src="js/data.js"></script>
+     <script src="js/categories.js"></script>
+      <script src="js/stocks.js"></script>
+      <script src="js/favourites.js"></script>
+      <script src="js/reviews.js"></script>
+         <script src="js/basket.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/form.js"></script>
+     <script src="js/login.js"></script>
 </body>
 </html>
