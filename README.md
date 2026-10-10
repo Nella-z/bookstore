@@ -62,7 +62,6 @@
 - JavaScript (ES6+), без фреймворков
 - [Swiper](https://swiperjs.com/) — слайдеры
 - Google Fonts (Bad Script, Caveat, Philosopher)
-- `localStorage` — временное хранилище данных
 
 ##  Что реализовано на фронтенде
 
