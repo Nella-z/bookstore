@@ -60,7 +60,7 @@
     </header>
 <section class="book-page">
     <div class="container book-page__container">
-        <form class="book-page__form" action="#" method="POST">
+        <form class="book-page__form"  id="book-form" action="#" method="POST">
             
             <div class="book-page__toolbar">
                 <h2>Добавить книгу</h2>
@@ -222,83 +222,9 @@
             </div>
         </div>
     </footer>
-  <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('.book-page__form');
-    const coverInput = document.getElementById('book-cover-input');
-    const coverFileName = document.getElementById('cover-file-name');
-
-    if (coverInput) {
-        coverInput.addEventListener('change', function() {
-            if (this.files && this.files[0]) {
-                coverFileName.textContent = this.files[0].name;
-            }
-        });
-    }
-
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); 
-
-            const saveNewBook = (finalCoverUrl) => {
-                const newId = books.length > 0 ? Math.max(...books.map(b => b.id)) + 1 : 1;
-                
-                const newBook = {
-                    id: newId,
-                    title: document.getElementById('name__book').value.trim(),
-                    author: document.getElementById('avtor__book').value.trim(),
-                    price: Number(document.getElementById('book-price').value) || 0,
-                    rating: 5.0,
-                    categories: [{ main: "Фэнтези", sub: "Городское фэнтези" }], 
-                    coverUrl: finalCoverUrl,
-                    isFavourite: false,
-                    publisher: document.getElementById('prod-publisher').value.trim(),
-                    series: document.getElementById('prod-series').value.trim(),
-                    year: Number(document.getElementById('prod-year').value) || 2024,
-                    isbn: document.getElementById('prod-isbn').value.trim(),
-                    pages: Number(document.getElementById('prod-pages').value) || 0,
-                    size: document.getElementById('prod-size').value.trim(),
-                    coverType: document.getElementById('prod-cover').value.trim(),
-                    circulation: Number(document.getElementById('prod-circulation').value) || 0,
-                    weight: Number(document.getElementById('prod-weight').value) || 0,
-                    ageRestriction: document.getElementById('age-restriction').value,
-                    text: document.getElementById('book-page__text').value.trim(),
-                    cartCount: 0,
-                    favouriteCount: 0,
-                    isInCart: false
-                };
-                
-                books.push(newBook);
-                localStorage.setItem('books', JSON.stringify(books));
-                
-                alert('Книга успешно добавлена!');
-                window.location.href = 'admin_books.html'; 
-            };
-
-            if (coverInput && coverInput.files && coverInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    saveNewBook(e.target.result);
-                };
-                reader.readAsDataURL(coverInput.files[0]);
-            } else {
-                saveNewBook('./images/book.png'); 
-            }
-        });
-    }
-});
-</script>
 <script src="js/api.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-   <script src="js/data.js"></script>
-     <script src="js/categories.js"></script>
-      <script src="js/stocks.js"></script>
-      <script src="js/favourites.js"></script>
-      <script src="js/reviews.js"></script>
-         <script src="js/basket.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/user.js"></script>
-    <script src="js/form.js"></script>
-     <script src="js/login.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/categories.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 </html>

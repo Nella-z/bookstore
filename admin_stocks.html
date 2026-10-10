@@ -70,39 +70,6 @@
     </div>
 </section>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('admin-stocks-list');
-    if (!container) return;
-
-    if (stocks.length === 0) {
-        container.innerHTML = '<p>Акций пока нет. Добавьте первую!</p>';
-        return;
-    }
-
-    const stocksHTML = stocks.map(stock => `
-        <div class="admin-stock-card" style="display: flex; gap: 20px; align-items: center; border: 1px solid #eee; padding: 15px; margin-bottom: 15px; border-radius: 8px; background: white;">
-            <img src="images/stock.jpg" alt="Акция" style="width: 100px; height: 100px; object-fit: cover; border-radius: 4px; background: #f0f0f0;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 5px 0; font-size: 18px;">${stock.theme}</h3>
-                <p style="margin: 0 0 5px 0; color: #666;">${stock.booksText}</p>
-                <p style="margin: 0; font-weight: bold; color: #e74c3c; font-size: 20px;">-${stock.discountPercent}%</p>
-            </div>
-            <button onclick="deleteStockFromAdmin(${stock.id})" style="padding: 8px 16px; background: #ff4d4f; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">Удалить</button>
-        </div>
-    `).join('');
-
-    container.innerHTML = stocksHTML;
-});
-
-function deleteStockFromAdmin(id) {
-    if (!confirm('Вы уверены, что хотите удалить эту акцию?')) return;
-    
-    stocks = stocks.filter(s => s.id !== id);
-    saveStocksToStorage();
-    location.reload(); 
-}
-</script>
     <footer>
         <div class="container">
             <div class="footer">
@@ -154,17 +121,9 @@ function deleteStockFromAdmin(id) {
             </div>
         </div>
     </footer>
-    <script src="js/api.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-   <script src="js/data.js"></script>
-     <script src="js/categories.js"></script>
-      <script src="js/stocks.js"></script>
-      <script src="js/favourites.js"></script>
-      <script src="js/reviews.js"></script>
-         <script src="js/basket.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/user.js"></script>
-    <script src="js/form.js"></script>
-     <script src="js/login.js"></script>
+<script src="js/api.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/categories.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 </html>

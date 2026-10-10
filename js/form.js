@@ -1,18 +1,19 @@
-document.getElementById('form__registration').addEventListener('submit', function(event) {
+const registrationForm = document.getElementById('form__registration');
+if (registrationForm) registrationForm.addEventListener('submit', async function(event) {
     event.preventDefault();
-
+    
     let isValid = true;
-
-     let fio = document.getElementById('fio');
-     let email = document.getElementById('email');
-     let password = document.getElementById('password');
-     let phone = document.getElementById('phone');
-     let birth = document.getElementById('birth');
-
-     const clearErrors = () =>{
+    let fio = document.getElementById('fio');
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+    let phone = document.getElementById('phone');
+    let birth = document.getElementById('birth');
+    
+    const clearErrors = () => {
         document.querySelectorAll('.error-text').forEach(error => error.remove());
-     }
-     const errorForm = (message, input) =>{
+    }
+    
+    const errorForm = (message, input) => {
         let errorEl = document.createElement('div');
         errorEl.className = 'error-text';
         errorEl.textContent = message;
@@ -20,29 +21,38 @@ document.getElementById('form__registration').addEventListener('submit', functio
         errorEl.style.fontSize = '14px';
         input.parentElement.appendChild(errorEl);
         isValid = false;
-     }
-     clearErrors();
-     if(!fio.value.trim()) errorForm('Введите ваше ФИО', fio);
-     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) errorForm('Введите корректный email', email);
-    if(password.value.length < 8) errorForm('Пароль должен быть не менее 8 символов', password);
-      if(!/^[\+]?[\(]?[0-9]{1,4}[\)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(phone.value.trim())) errorForm('Введите корректный номер телефона', phone);
-       if(!birth.value.trim()) errorForm('Введите дату рождения', birth);
-
-
-   if(isValid) {
-    const newUser = {
-        fio: fio.value.trim(),
-        email: email.value.trim(),
-        phone: phone.value.trim(),
-        birth: birth.value.trim(),
-        city: "Не указан", 
-        password: password.value,
-        avatar: "images/avatar.svg" 
-    };
-    localStorage.setItem('user', JSON.stringify(newUser));
-    localStorage.setItem('isLoggedIn', 'true');
+    }
     
-    alert('Регистрация успешна!');
-    window.location.href = 'home.html';
-}
-})
+    clearErrors();
+    
+    if(!fio.value.trim()) errorForm('Введите ваше ФИО', fio);
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) errorForm('Введите корректный email', email);
+    if(password.value.length < 8) errorForm('Пароль должен быть не менее 8 символов', password);
+    if(!/^[\+]?[\(]?[0-9]{1,4}[\)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(phone.value.trim())) errorForm('Введите корректный номер телефона', phone);
+    if(!birth.value.trim()) errorForm('Введите дату рождения', birth);
+    
+    if(isValid) {
+        try {
+            const userData = {
+                fio: fio.value.trim(),
+                email: email.value.trim(),
+                password: password.value,
+                phone: phone.value.trim(),
+                birth: birth.value.trim()
+            };
+            
+            await api.auth.register(userData);
+            
+            window.location.href = 'home.html';
+        } catch (error) {
+            if (error.errors) {
+                Object.entries(error.errors).forEach(([field, messages]) => {
+                    const input = document.getElementById(field);
+                    if (input) errorForm(messages[0], input);
+                });
+            } else {
+                errorForm(error.message, email);
+            }
+        }
+    }
+});

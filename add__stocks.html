@@ -60,7 +60,7 @@
     </header>
 <section class="book-page">
     <div class="container book-page__container">
-        <form class="book-page__form" action="#" method="POST">
+        <form class="book-page__form"  id="stock-form" action="#" method="POST">
             <div class="book-page__toolbar">
                 <h2>Добавить акцию</h2>
                 <button type="submit" class="book-page__save-btn">Сохранить</button>
@@ -149,39 +149,12 @@
         </div>
     </footer>
     
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('.book-page__form');
-    if (!form) return;
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); 
-        const newId = stocks.length > 0 ? Math.max(...stocks.map(s => s.id)) + 1 : 1;
-        
-        const newStock = {
-            id: newId,
-            theme: document.getElementById('stock-theme').value.trim(),
-            booksText: document.getElementById('stock-books').value.trim(),
-            discountPercent: Number(document.getElementById('stock-discount').value)
-        };
-        
-        stocks.push(newStock);
-        saveStocksToStorage();
-        
-        alert('Акция успешно добавлена!');
-        window.location.href = 'admin_stocks.html'; 
-    });
-});
-</script>
+    
 <script src="js/api.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-      <script src="js/data.js"></script>
-     <script src="js/categories.js"></script>
-      <script src="js/stocks.js"></script>
-      <script src="js/favourites.js"></script>
-      <script src="js/reviews.js"></script>
-         <script src="js/basket.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/categories.js"></script>
+    <script src="js/admin.js"></script>
     
 </body>
 </html>
